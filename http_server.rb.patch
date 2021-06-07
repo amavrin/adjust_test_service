@@ -1,0 +1,10 @@
+--- http_server/http_server.rb
++++ http_server/http_server.rb
+@@ -1,6 +1,7 @@
+ require 'socket'
+ 
+ server  = TCPServer.new('0.0.0.0', 80)
++$stdout.sync = true
+ 
+ loop {
+   client  = server.accept

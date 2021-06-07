@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: adjust-test-app
+  name: adjust-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adjust-test-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: adjust-test-app
+    spec:
+      containers:
+      - image: alexeymavrin/adjust-test-app
+        name: adjust-test-app
+        ports:
+        - containerPort: 80
+          protocol: TCP
