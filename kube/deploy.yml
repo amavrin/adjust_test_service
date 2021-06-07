@@ -5,7 +5,7 @@ metadata:
     app: adjust-test-app
   name: adjust-test-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: adjust-test-app
@@ -21,4 +21,34 @@ spec:
         name: adjust-test-app
         ports:
         - containerPort: 80
+          name: http-port
           protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - curl -s http://localhost:80/healthcheck | grep OK
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - curl -s http://localhost:80/healthcheck | grep OK
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: adjust-test-app
+  name: adjust-test-app
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: adjust-test-app
