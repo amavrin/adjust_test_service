@@ -31,7 +31,8 @@ delete_namespace() {
 port_forward() {
     kubectl wait \
         --for=condition=available \
-        --timeout=600s deployment/adjust-test-app -n test
+        --timeout=600s deployment/adjust-test-app \
+        -n "$NAMESPACE"
     kubectl port-forward \
         -n "$NAMESPACE" \
         service/adjust-test-app \
