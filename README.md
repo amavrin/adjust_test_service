@@ -11,6 +11,7 @@ in Kubernetes.
 * `deploy.sh`: script to deploy the service to Kubernetes
 * `http_server.rb.patch`: patch to set io unbuffered
 * `kube/deploy.yml`: deployment and service definition
+* `helm/`: simple Helm chart to deploy the app
 
 # Notes
 
@@ -36,6 +37,13 @@ in Kubernetes.
    to connect to the service. Another option was to use
    `nodePort` service type.
 
+5. For checking, I used
+   * simple self-deployed cluster
+   * "Docker desctop for MAC"
+
+   As I have a MAC-based computer, I did not use "minicube", as
+   suggested in the task.
+
 # Build an image and push it to Docker hub
 
 ```
@@ -60,6 +68,8 @@ This script basically
 2. applies `kube/deploy.yml` with `Deployment` and `Service`
 3. executes `kubectl port-forward` to allow to connect to the service
 
+See `./deploy.sh -h` for help.
+
 ## Uninstall
 
 ```
@@ -69,3 +79,27 @@ bash deploy.sh -n test -u
 This would
 1. removes Deployment and Service from `kube/deploy.yml` from Kubernetes
 2. removes namespace if not `default`.
+
+# Deploy with Helm
+
+See [helm install instrauctions](https://helm.sh/docs/intro/install/)
+for the info how to install helm, if needed.
+
+## Install
+
+Change directory to `helm/` and execute:
+```
+helm install -n test adjust-test-app adjust-test-app --create-namespace
+```
+This should deploy the app with 3 replicas in the `test` namespace.
+Namespace will be created if not exists.
+
+This command also outputs short instructions on how to connect to app with
+`cubectl port-forward`.
+
+## Uninstall
+
+```
+helm uninstall -n test adjust-test-app
+kubectl delete ns test
+```
