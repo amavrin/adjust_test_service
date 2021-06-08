@@ -88,7 +88,7 @@ This would
 
 # Deploy with Helm
 
-See [helm install instrauctions](https://helm.sh/docs/intro/install/)
+See [helm install instructions](https://helm.sh/docs/intro/install/)
 for the info how to install helm, if needed.
 
 ## Install
