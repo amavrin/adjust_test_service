@@ -1,6 +1,6 @@
 apiVersion: v2
 name: adjust-test-app
-description: A Helm chart Adjust test app deployment
+description: A Helm chart for Adjust test app deployment
 
 type: application
 
