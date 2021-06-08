@@ -28,6 +28,12 @@ in Kubernetes.
    For this reason I had to use "exec" `readinessProbe`,
    and not `httpGet`.
 
+   The probes do
+   ```
+   curl -s http://localhost:80/healthcheck | grep OK
+   ```
+   as the probe command.
+
 3. For the same reason, it was impossible to make an ingress.
    I suggest to add at least basic http responce (`"HTTP/1.1 200`)
    to the example. If this would the case we could use `Ingress`.
