@@ -35,7 +35,7 @@ in Kubernetes.
    as the probe command.
 
 3. For the same reason, it was impossible to make an ingress.
-   I suggest to add at least basic http responce (`"HTTP/1.1 200`)
+   I suggest to add at least basic http response (`"HTTP/1.1 200`)
    to the example. If this would the case we could use `Ingress`.
    See, for example, `kube/ingress.yml`.
 
