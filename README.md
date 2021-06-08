@@ -45,7 +45,7 @@ in Kubernetes.
 
 5. For checking, I used
    * simple self-deployed cluster
-   * "Docker desctop for MAC"
+   * "Docker desktop for MAC"
 
    As I have a MAC-based computer, I did not use "minicube", as
    suggested in the task.
