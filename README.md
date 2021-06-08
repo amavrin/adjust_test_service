@@ -25,7 +25,7 @@ in Kubernetes.
 
 2. Despite on talking on port 80, `http_server.rb` does not talk HTTP.
    For example, it does not return http status.
-   For this reason I had to use "exec" `readinessProbe`,
+   For this reason I had to use `exec` `readinessProbe`,
    and not `httpGet`.
 
    The probes do
